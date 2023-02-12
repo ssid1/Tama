@@ -51,6 +51,9 @@ function draw() {
   }else if(tamaState == full){
     //full color
     fill(255,0,0);
+    textAlign(CENTER);
+    textSize(tamaDiam-80);
+    text("FULL", tamaX,tamaY-100)
 
     //manage returning to hungry state
     if(tamaDiam > width/6){
@@ -133,27 +136,44 @@ function handleButtonPress()
      if(!dying){
       //set food to random value
       food.push(40);
-
-      //manage button state
-      //button.html("FEEDING");
-      //button.addClass("inactive");
     }
     
  }
 
 function deadbutton()
 {
+  if(dying == true){
+  button2.html("DEAD");
+  button2.addClass("inactive");
+  button3.html("REVIVE");
+  button3.removeClass("inactive");
+  }else{
+  button3.html("REVIVE");
+  button3.removeClass("inactive");
+  button2.html("DEAD");
+  button2.addClass("inactive");
   state = dead;
   msize = 0;
   dying = true;
+  }
 }
     
 function alivebutton()
 {
-
+  if(dying == false){
+  button3.html("STILL ALIVE");
+  button3.addClass("inactive");
+  button2.html("KILL");
+  button2.removeClass("inactive");
+  }
+  else {
+  button2.html("KILL");
+  button2.removeClass("inactive");
   state = fwm;
   msize = 3;
   dying = false;
+  }
+
 }
 
 function updateFood()
